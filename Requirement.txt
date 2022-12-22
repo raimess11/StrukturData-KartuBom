@@ -15,10 +15,11 @@ Cara bermain
 Requirement:
 1. Tumpukan kartu harus memuat 1 kartu bom.
 2. Pemain harus mendapatkan 5 kartu pada awal permainan
-2. Pemain harus mengambil 1 kartu milik pemain berikutnya
-3. Pemain harus membuang 1 kartu ditangan nya kecuali kartu yang baru diambil atau kartu bom
-4. Pemain harus berhenti bermain ketika kartu pemain selanjutnya tersisa 1.
-5. Ketika semua kartu pemain tersisa 1, maka permainan berakhir.
-6. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
-7. Pemain yang memiliki kartu bom dinyatakan kalah.
-
+3. Ketika mendapatkan giliran, pemain harus memilih 1 kartu milik pemain berikutnya.
+4. Kartu yang dipilih pemain dikeluarkan dari kumpulan kartu milik pemain berikutnya.
+5. Kartu yang dipilih ditambahkan menjadi kartu milik pemain.
+6. Pemain harus membuang 1 kartu yang dimilikinya kecuali kartu yang baru diambil atau kartu bom.
+7. Pemain harus berhenti bermain ketika kartu dirinya sendiri dan pemain selanjutnya tersisa 1.
+8. Ketika semua kartu pemain tersisa 1, maka permainan berakhir.
+9. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
+10. Pemain yang memiliki kartu bom dinyatakan kalah.
