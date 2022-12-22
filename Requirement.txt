@@ -16,3 +16,4 @@ Requirement:
 1. Pemain harus mendapatkan kartu pada awal permainan
 2. Pemain harus mengambil 1 kartu milik pemain berikutnya
 3. Pemain harus membuang 1 kartu ditangan nya kecuali kartu yang baru diambil atau kartu bom
+
