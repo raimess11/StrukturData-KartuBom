@@ -13,7 +13,12 @@ Cara bermain
 6. Ketika semua pemain telah tersisa 1 kartu, maka setiap pemain menunjukkan kartu tersebut. Pemain yang memiliki kartu bom dianggap kalah.
 
 Requirement:
-1. Pemain harus mendapatkan kartu pada awal permainan
+1. Tumpukan kartu harus memuat 1 kartu bom.
+2. Pemain harus mendapatkan 5 kartu pada awal permainan
 2. Pemain harus mengambil 1 kartu milik pemain berikutnya
 3. Pemain harus membuang 1 kartu ditangan nya kecuali kartu yang baru diambil atau kartu bom
+4. Pemain harus berhenti bermain ketika kartu pemain selanjutnya tersisa 1.
+5. Ketika semua kartu pemain tersisa 1, maka permainan berakhir.
+6. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
+7. Pemain yang memiliki kartu bom dinyatakan kalah.
 
