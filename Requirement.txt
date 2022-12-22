@@ -1,4 +1,12 @@
+
 requirement:
 1.pemain harus mendapatkan kartu pada awal permainan
 2.pemain harus mengambil 1 kartu milik pemain berikutnya
 3.pemain harus membuang 1 kartu ditangan nya kecuali kartu yang baru dia ambil atau kartu bom
+
+Requirement Game Kartu Bom
+Catatan : Stack & Queue
+
+Deskripsi:
+Permainan kartu bom adalah permainan kartu yang dimainkan oleh beberapa pemain, dimana setiap giliran pemain harus mengambil satu kartu pemain berikutnya dan membuang satu kartu miliknya kecuali kartu bom. Permainan berakhir ketika semua pemain tersisa satu kartu, dan pemain yang memiliki kartu bom (joker) dianggap kalah.
+
