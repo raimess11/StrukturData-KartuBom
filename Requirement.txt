@@ -1,0 +1,4 @@
+requirement:
+1.pemain harus mendapatkan kartu pada awal permainan
+2.pemain harus mengambil 1 kartu milik pemain berikutnya
+3.pemain harus membuang 1 kartu ditangan nya kecuali kartu yang baru dia ambil atau kartu bom
