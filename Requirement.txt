@@ -23,3 +23,25 @@ Requirement:
 8. Ketika semua kartu pemain tersisa 1, maka permainan berakhir.
 9. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
 10. Pemain yang memiliki kartu bom dinyatakan kalah.
+
+Objek:
+
+Pemain
+================================
+kumpulanKartu : tumpukan kartu
+================================
+addCard()
+removeCard()
+takeCard()
+
+Set Kartu
+================================
+kartu : string
+elemen : <
+	info : kartu,
+	next : address >
+address : pointer to elemen
+tumpukanKartu : <
+	head : address >
+================================
+giveCard()
