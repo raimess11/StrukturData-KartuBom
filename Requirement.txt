@@ -27,6 +27,7 @@ Requirement:
 Program:
 Set kartu menggunakan metode stack
 Deck menggunakan metode queue
+primitif converstioninfixtoprefix
 
 Objek:
 
@@ -69,6 +70,9 @@ struct tumpukanKartu : <
 giveCard()
 {I.S. terdapat stack kartu yang akan dibagikan kepada pemain
 F.S. kartu-kartu dibagikan secara merata kepada pemain}
+logika
+	{loop pembagian kartu hingga set kartu habis/kosong}
+		{kartu dibagikan kepada tiap pemain secara merata}
 
 
 Hand
@@ -91,13 +95,23 @@ lose : pemain
 startGame()
 {I.S. setiap pemain telah mendapatkan kartu dan belum ditentukan pemain untuk turn
 F.S. turn/giliran diberikan kepada pemain pertama dalam antrian}
+logika
+
+
 finishGame()
 {I.S. setiap pemain tersisa 1 kartu
-F.S. }
+F.S. turn dikosongkan}
+logika
+	{pengecekan jumlah kartu tiap pemain}
+		{jika semua pemain tersisa 1 kartu, maka permainan diberhentikan}
+
 checkLose(pemain)
 {I.S. permainan telah berakhir/finish
 F.S. pemain yang memiliki kartu bom (Joker) dinyatakan kalah}
+logika
+	{pengecekan 1 kartu terakhir yang dimiliki oleh tiap pemain}
+	{jika pemain yang ditemukan memiliki joker maka dianggap kalah}
 
 
-primitif converstioninfixtoprefix
+
 
