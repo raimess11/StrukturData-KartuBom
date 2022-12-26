@@ -32,12 +32,19 @@ struct pemain : <
 	kumpulanKartu : kartuPegangan,
 	jumlahKartu : integer >
 ================================
-addCard()
+procedure addCard(in x : address, in/out playerX : pemain)
 {I.S. terdapat kartu yang telah diambil dari pemain selanjutnya
 F.S. kartu yang telah diambil dimasukkan ke kumpulan kartu pemain}
-removeCard()
+logika
+	{masukkan kartu ke dalam kumpulan kartu playerX}
+
+procedure removeCard(out x : address, in/out playerX pemain)
 {I.S. jumlah kartu pemain != 1
 F.S. kartu pilihan pemain dihapus dari kumpulanKartu}
+logika
+	{pengecekan apakah jumlah kartu pemain != 1}
+	{pemilih kartu pada kumpulan kartu pemain, jika punya kartu bom maka tidak boleh dipilih}
+
 procedure takeCard()
 {I.S. kartu pemain selanjutnya lebih dari 1
 F.S. kartu pemain selanjutnya diambil dan ditampung dalam variabel, jumlahKartu pemain selanjutnya berkurang 1}
@@ -78,11 +85,13 @@ lose : pemain
 ================================
 startGame()
 {I.S. setiap pemain telah mendapatkan kartu dan belum ditentukan pemain untuk turn
-F.S. turn pemain pertama dalam antrian}
+F.S. turn/giliran diberikan kepada pemain pertama dalam antrian}
 finishGame()
 {I.S. setiap pemain tersisa 1 kartu
 F.S. }
 checkLose(pemain)
+{I.S. permainan telah berakhir/finish
+F.S. pemain yang memiliki kartu bom (Joker) dinyatakan kalah}
 
 
 primitif converstioninfixtoprefix
