@@ -1,3 +1,6 @@
+#code::block attribute
+*.layout
+
 # Prerequisites
 *.d
 
