@@ -40,10 +40,11 @@ takeCard()
 Set
 ================================
 kartu : string
-struct elemenSet : <
-	info : kartu,
+infotype : kartu
+struct elemen : <
+	info : infotype,
 	next : address >
-addressSet : pointer to elemenSet
+address : pointer to elemen
 tumpukanKartu : <
 	top : addressSet >
 ================================
@@ -53,10 +54,10 @@ giveCard()
 Hand
 ================================
 kartu : string
-struct elemenHand : <
-	info : kartu,
+struct elemen : <
+	info : infotype,
 	next : address >
-addressHand : pointer to elemenHand
+address : pointer to elemen
 kartuPegangan : <
 	head : addressHand >
 ================================
