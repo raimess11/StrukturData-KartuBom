@@ -24,6 +24,10 @@ Requirement:
 9. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
 10. Pemain yang memiliki kartu bom dinyatakan kalah.
 
+Program:
+Set kartu menggunakan metode stack
+Deck menggunakan metode queue
+
 Objek:
 
 Player
@@ -55,13 +59,11 @@ logika
 
 Set
 ================================
+constant N : integer = 20
 kartu : string
 infotype : kartu
-struct elemen : <
-	info : infotype,
-	next : address >
-address : pointer to elemen
-tumpukanKartu : <
+address : infotype
+struct tumpukanKartu : <
 	top : addressSet >
 ================================
 giveCard()
@@ -76,7 +78,7 @@ struct elemen : <
 	info : infotype,
 	next : address >
 address : pointer to elemen
-kartuPegangan : <
+struct kartuPegangan : <
 	head : addressHand >
 ================================
 
