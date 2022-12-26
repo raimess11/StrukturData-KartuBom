@@ -37,28 +37,28 @@ removeCard()
 takeCard()
 
 
-Card Set
+Set
 ================================
 kartu : string
-struct elemen : <
+struct elemenSet : <
 	info : kartu,
 	next : address >
-address : pointer to elemen
+addressSet : pointer to elemenSet
 tumpukanKartu : <
-	top : address >
+	top : addressSet >
 ================================
 giveCard()
 
 
-Deck
+Hand
 ================================
 kartu : string
-struct elemen : <
+struct elemenHand : <
 	info : kartu,
 	next : address >
-address : pointer to elemen
-tumpukanKartu : <
-	head : address >
+addressHand : pointer to elemenHand
+kartuPegangan : <
+	head : addressHand >
 ================================
 
 
