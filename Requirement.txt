@@ -28,7 +28,9 @@ Objek:
 
 Pemain
 ================================
-kumpulanKartu : tumpukan kartu
+struct pemain : <
+	kumpulanKartu : tumpukan kartu,
+	jumlahKartu : integer >
 ================================
 addCard()
 removeCard()
@@ -38,7 +40,7 @@ takeCard()
 Set Kartu
 ================================
 kartu : string
-elemen : <
+struct elemen : <
 	info : kartu,
 	next : address >
 address : pointer to elemen
@@ -46,3 +48,13 @@ tumpukanKartu : <
 	head : address >
 ================================
 giveCard()
+
+
+Game
+================================
+turn : pemain
+lose : pemain
+================================
+startGame()
+finishGame(0
+checkLose(pemain)
