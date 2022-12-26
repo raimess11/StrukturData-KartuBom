@@ -29,12 +29,18 @@ Objek:
 Player
 ================================
 struct pemain : <
-	kumpulanKartu : tumpukan kartu,
+	kumpulanKartu : kartuPegangan,
 	jumlahKartu : integer >
 ================================
 addCard()
+{I.S. terdapat kartu yang telah diambil dari pemain selanjutnya
+F.S. kartu yang telah diambil dimasukkan ke kumpulan kartu pemain}
 removeCard()
-takeCard()
+{I.S. jumlah kartu pemain != 1
+F.S. kartu pilihan pemain dihapus dari kumpulanKartu}
+procedure takeCard()
+{I.S. kartu pemain selanjutnya lebih dari 1
+F.S. kartu pemain selanjutnya diambil dan ditampung dalam variabel, jumlahKartu pemain selanjutnya berkurang 1}
 
 
 Set
@@ -49,6 +55,8 @@ tumpukanKartu : <
 	top : addressSet >
 ================================
 giveCard()
+{I.S. terdapat stack kartu yang akan dibagikan kepada pemain
+F.S. kartu-kartu dibagikan secara merata kepada pemain}
 
 
 Hand
@@ -69,5 +77,13 @@ turn : pemain
 lose : pemain
 ================================
 startGame()
-finishGame(0
+{I.S. setiap pemain telah mendapatkan kartu dan belum ditentukan pemain untuk turn
+F.S. turn pemain pertama dalam antrian}
+finishGame()
+{I.S. setiap pemain tersisa 1 kartu
+F.S. }
 checkLose(pemain)
+
+
+primitif converstioninfixtoprefix
+
