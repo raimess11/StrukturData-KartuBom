@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/cardBom/cardBom.cpp" />
+		<Unit filename="include/cardBom/cardBom.h" />
+		<Unit filename="include/queue/queue.cpp" />
+		<Unit filename="include/queue/queue.h" />
+		<Unit filename="include/stack/stack.cpp" />
+		<Unit filename="include/stack/stack.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>
