@@ -26,7 +26,7 @@ Requirement:
 
 Objek:
 
-Pemain
+Player
 ================================
 struct pemain : <
 	kumpulanKartu : tumpukan kartu,
@@ -37,7 +37,20 @@ removeCard()
 takeCard()
 
 
-Set Kartu
+Card Set
+================================
+kartu : string
+struct elemen : <
+	info : kartu,
+	next : address >
+address : pointer to elemen
+tumpukanKartu : <
+	top : address >
+================================
+giveCard()
+
+
+Deck
 ================================
 kartu : string
 struct elemen : <
@@ -47,7 +60,6 @@ address : pointer to elemen
 tumpukanKartu : <
 	head : address >
 ================================
-giveCard()
 
 
 Game
