@@ -19,29 +19,156 @@ Requirement:
 4. Kartu yang dipilih pemain dikeluarkan dari kumpulan kartu milik pemain berikutnya.
 5. Kartu yang dipilih ditambahkan menjadi kartu milik pemain.
 6. Pemain harus membuang 1 kartu yang dimilikinya kecuali kartu yang baru diambil atau kartu bom.
-7. Pemain harus berhenti bermain ketika kartu dirinya sendiri dan pemain selanjutnya tersisa 1.
-8. Ketika semua kartu pemain tersisa 1, maka permainan berakhir.
-9. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
-10. Pemain yang memiliki kartu bom dinyatakan kalah.
+7. Pemain kartu selanjutnya tersisa 1, maka permainan berakhir.
+8. Ketika permainan berakhir, program harus menemukan pemain yang memiliki kartu bom.
+9. Pemain yang memiliki kartu bom dinyatakan kalah.
+
+Program:
+Set kartu menggunakan metode stack
+Deck menggunakan metode queue
+primitif converstioninfixtoprefix
 
 Objek:
 
-Pemain
+Player
+{Seorang pemain}
 ================================
-kumpulanKartu : tumpukan kartu
+type player : <
+	namaPlayer: string,
+	deck : hand,
+	jumlahKartu : integer >
 ================================
-addCard()
-removeCard()
-takeCard()
 
-Set Kartu
+
+
+Players
+{Kumpulan pemain}
+{Circular Single Linked List}
+================================
+infotypePlayer : player
+addressPlayer : pointer to elemenPlayer
+type elemenPlayer <
+	info : infotypePlayer,
+	next : addressPlayer>
+type listPlayer <
+	first : addressPlayer>
+================================
+procedure takeCard(in/out playerX : pemain, nextPlayerX : pemain, finish : boolean)
+{I.S. kartu pemain selanjutnya lebih dari 1
+F.S. kartu pemain selanjutnya diambil dan ditampung dalam variabel, jumlahKartu pemain selanjutnya berkurang 1. Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}
+algoritma
+	{jika kartu pemain selanjutnya lebih dari 1}
+		{memilih kartu ke-Z pemain selanjutnya}
+		{loop hingga kartu ke-Z}
+			{dequeue nextPlayerX, kartu disimpan pada variabel Y}
+			{enqueue Y pada nextPlayerX}
+		{dequeue kartu ke-Z nextPlayerX}
+		{jumlah kartu nextPLayerX berkurang 1}
+		{enqueue Z pada playerX}
+	{else}
+		{finish menjadi true}
+
+
+procedure removeCard(out x : address, in/out playerX : pemain)
+{I.S. jumlah kartu pemain lebih dari 1
+F.S. kartu pilihan pemain dihapus dari kumpulanKartu}
+algoritma
+	{pengecekan kartu pemain masih lebih dari 1}
+		{jika head deck playerX adalah joker}
+			{dequeue: melepas joker sementara dari deck}
+			{enqueue: memasukkan joker kembali ke belakang deck}
+		{dequeue: buang kartu pemain yang terdepan)
+
+
+Kartu
+{Sebuah kartu}
 ================================
 kartu : string
-elemen : <
-	info : kartu,
-	next : address >
-address : pointer to elemen
-tumpukanKartu : <
-	head : address >
+infotype : kartu
 ================================
-giveCard()
+
+
+Set
+{Stak kartu}
+{Stack: Array}
+================================
+constant N : integer = 20
+addressSet : int
+type tumpukanKartu : <
+	S : array [1..N] of infotype
+	top : addressSet >
+================================
+
+
+
+Hand
+{Deck kartu pada tangan player}
+{Queue: Single Linked List}
+================================
+type elemenHand : <
+	info : infotype,
+	next : address >
+addressHand : pointer to elemenHand
+struct kartuPegangan : <
+	head : addressHand>
+================================
+procedure show(in player : addressPLayer)
+{I.S. Jumlah kartu pemain tidak kosong}
+{F.S. Menampilkan seluruh kartu Hand pemain}
+algoritma
+	{loop memperlihatkan seluruh kartu Hand pemain}
+
+
+
+Game
+{Abstrak yang mengatur permainan}
+================================
+turn : addressPlayer
+lose : player
+finish : boolean
+================================
+procedure play(in/out finish : boolean, players : listPlayer, set : tumpukankartu)
+{I.S. finish true, yang artinya permainan belum berlangsung}
+{F.S. Permainan berjalan selama finish masih false, berakhir ketika finish true}
+algorita
+	{prepareGame}
+	{startGame}
+	{repeat loop hingga finish = true}
+		{show}
+		{takeCard}
+		{removeCard}
+		{ganti turn}
+	{checkLose}
+
+
+procedure prepareGame(in/out players : listPlayer, set : tumpukankartu)
+{I.S. Terdapat stack kartu yang akan dibagikan kepada pemain, seluruh pemain belum mendapatkan kartu, belum ditentukan pemain untuk turn, status finish masih true}
+{F.S. Setiap pemain mendapatkan kartu secara merata}
+algoritma
+	{loop pembagian kartu hingga set kartu habis/kosong}
+
+
+procedure startGame(in/out finish : boolean, turn : addressPlayer, players : listPlayer)
+{I.S. Setiap pemain telah mendapatkan kartu, belum ditentukan pemain untuk turn, status playing masih false
+F.S. Turn/giliran diberikan kepada pemain pertama dalam antrian}
+logika
+algoritma
+	{ubah status finish jadi false}
+	{pilih pemain yang mendapatkan turn}
+	{insert turn kepada pemain}
+
+
+function checkLose(players : listPlayer) -> addressPlayer
+{I.S. Permainan telah berakhir/finish
+F.S. Pemain yang memiliki kartu bom (Joker) dinyatakan kalah}
+logika
+	{pengecekan 1 kartu terakhir yang dimiliki oleh tiap pemain}
+		{jika pemain yang ditemukan memiliki joker maka return pemain tersebut}
+
+
+
+
+
+
+
+
