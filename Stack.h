@@ -1,6 +1,9 @@
 #ifndef STACK_H_INCLUDED
 #define STACK_H_INCLUDED
 
+#define info(S) ((S).info)
+#define Top(S) ((S).Top)
+
 #include <iostream>
 using namespace std;
 
