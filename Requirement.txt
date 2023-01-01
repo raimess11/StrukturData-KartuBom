@@ -28,6 +28,11 @@ Set kartu menggunakan metode stack
 Deck menggunakan metode queue
 primitif converstioninfixtoprefix
 
+Program:
+Set kartu menggunakan metode stack
+Deck menggunakan metode queue
+primitif converstioninfixtoprefix
+
 Objek:
 
 Player
@@ -83,6 +88,7 @@ algoritma
 Kartu
 {Sebuah kartu}
 ================================
+constant N : integer = 20
 kartu : string
 infotype : kartu
 ================================
@@ -164,9 +170,6 @@ F.S. Pemain yang memiliki kartu bom (Joker) dinyatakan kalah}
 logika
 	{pengecekan 1 kartu terakhir yang dimiliki oleh tiap pemain}
 		{jika pemain yang ditemukan memiliki joker maka return pemain tersebut}
-
-
-
 
 
 
