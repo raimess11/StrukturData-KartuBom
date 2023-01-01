@@ -10,7 +10,7 @@ using namespace std;
 #define next(P) (P)->next
 #define nil NULL
 
-struct infotype {
+struct infotype{
     string Artis, Judul;
 };
 typedef struct element *adr;

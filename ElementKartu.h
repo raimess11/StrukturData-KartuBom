@@ -1,19 +1,20 @@
 #ifndef ELEMENTKARTU_H_INCLUDED
 #define ELEMENTKARTU_H_INCLUDED
 
-#include"Stack.h"
+#include<iostream>
+using namespace std;
 
 //player
 struct player
 {
     string namaPlayer;
-    hand deck;
+    kartuPegangan deck;
     int jumlahKartu;
 };
 
 //players
 typedef player infotypePlayer;
-typedef elementPlayer* addressPlayer;
+typedef struct elementPlayer* addressPlayer;
 
 struct elementPlayer
 {
@@ -44,6 +45,13 @@ struct tumpukanKartu
     addressSet top;
 };
 
+//void createStack(tumpukanKartu &S);
+//bool isEmpty(tumpukanKartu S);
+//bool isFull(tumpukanKartu S);
+//void push(tumpukanKartu &S,infotype x);
+//string pop(tumpukanKartu &S);
+//void printInfo(tumpukanKartu S);
+
 //hand
 typedef struct elementHand *addressHand;
 
@@ -56,6 +64,7 @@ struct elementHand
 struct kartuPegangan
 {
     addressHand head;
+    addressHand tail;
 };
 
 void show(addressPlayer player)
