@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1672593498 source:d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\main.cpp
+1672596698 source:d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\main.cpp
 	<iostream>
 	"ElementKartu.h"
 
@@ -9,7 +9,7 @@
 1672573232 d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\stack.h
 	<iostream>
 
-1672593570 d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\elementkartu.h
+1672598948 d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\elementkartu.h
 	<iostream>
 
 1672572866 d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\queue.h
@@ -18,8 +18,7 @@
 1672570030 source:d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\queue.cpp
 	"Queue.h"
 
-1672590742 source:d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\elementkartu.cpp
+1672599607 source:d:\telkom university\semester 3\struktur data\tubes\strukturdata-kartubom\elementkartu.cpp
 	"ElementKartu.h"
-	<cstdlib>
 	<iostream>
 

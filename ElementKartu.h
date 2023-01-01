@@ -26,8 +26,9 @@ struct kartuPegangan
 typedef int addressSet;
 struct tumpukanKartu
 {
-    infotypeKartu Set[N];
-    addressSet top ;
+    infotypeKartu Set[N]={"Joker","Clubs 8","Diamons 8","Spade 8","Hearts 9","Clubs 9","Diamons 9","Spade 9","Hearts 10","Clubs 10","Diamons 10","Spade 10","Hearts King","Clubs King","Diamons King","Spade King","Hearts Queen","Clubs Queen","Diamons Queen","Spade Queen"};
+
+    addressSet top = 19;
 };
 
 //player
@@ -54,19 +55,17 @@ struct listPlayer
 };
 
 //game
-const string joker = "Joker";
-addressPlayer turn;
-player lose;
-bool finish;
 
-void play(bool &finish, listPlayer &players, tumpukanKartu &set);
+const string joker = "Joker";
+
+void play(bool &finish, listPlayer &players, tumpukanKartu &set,addressPlayer& turn);
 void prepareGame(listPlayer &players, tumpukanKartu &set);
 void startGame(bool &finish, addressPlayer &turn, listPlayer &players);
 addressPlayer checkLose(listPlayer players);
 
 //players
 void takeCard(player &CurrentPlayer, player &nextPlayer, bool &finish);
-void removeCard(tumpukanKartu &set, player targetPlayer);
+void removeCard(tumpukanKartu &set, player &targetPlayer);
 
 //hand
 void show(addressPlayer player);

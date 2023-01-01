@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ElementKartu.cpp" />
+		<Unit filename="ElementKartu.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

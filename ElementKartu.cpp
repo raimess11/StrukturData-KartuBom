@@ -1,22 +1,27 @@
 #include "ElementKartu.h"
 
-#include<cstdlib>
+//#include<cstdlib>
 
 #include<iostream>
 using namespace std;
 
 //game
-void play(bool &finish, listPlayer &players, tumpukanKartu &set)
+void play(bool &finish, listPlayer &players, tumpukanKartu &set,addressPlayer &turn)
 /*{I.S. finish true, yang artinya permainan belum berlangsung}
 {F.S. Permainan berjalan selama finish masih false, berakhir ketika finish true}*/
 {
     prepareGame(players, set);
     startGame(finish,turn,players);
+
+
     while (finish == false)
     {
         show(turn);
+        cout<<"ambil kartu pemain selanjutnya\n";
         takeCard(turn->info,turn->next->info,finish);
+        show(turn);
         removeCard(set, turn->info);
+        show(turn);
         turn = turn->next;
     }
     checkLose(players);
@@ -27,57 +32,26 @@ void prepareGame(listPlayer &players, tumpukanKartu &set)
 belum ditentukan pemain untuk turn, status finish masih true}
 {F.S. Setiap pemain mendapatkan kartu secara merata}*/
 {
-    //players yang sudah punya kartu
-    infotypeKartu newCard;
-    addressHand newHandCard;
-    listPlayer readyPlayers;
-    readyPlayers.first = NULL;
+    cout<<"we just prepare your games\n";
+    addressPlayer selectedPlayer = players.first;
+    for(int i = 0; i<20;i++)
+    {
+        infotypeKartu infoNewCard;
+        addressHand newCard;
+        pop(set,infoNewCard);
+        createHandElement(infoNewCard, newCard);
+        enqueueCard(selectedPlayer->info.deck, newCard);
+        selectedPlayer->info.jumlahKartu++;
+        selectedPlayer = selectedPlayer->next;
 
-    //bagikan kartu
-    addressPlayer prev;
-    while(prev->next != players.first)
-    {
-        prev = prev->next;
     }
-    while(players.first != NULL)
-    {
-        //kalau beruntung dapet kartu
-        if(rand() % 4 > 2)
-        {
-            pop(set,newCard);
-            createHandElement(newCard, newHandCard);
-            enqueueCard(players.first->info.deck, newHandCard);
-            players.first->info.jumlahKartu++;
-        }
-        //geser
-        if(handIsFull(players.first))
-        {
-            if(players.first->next != players.first)
-            {
-                prev->next = players.first->next;
-                players.first = players.first->next;
-                players.first->next = readyPlayers.first;
-                readyPlayers.first = players.first;
-            }
-            else
-            {
-                players.first->next = readyPlayers.first;
-                readyPlayers.first = players.first;
-                players.first = NULL;
-            }
-        }
-        else
-        {
-            players.first = players.first->next;
-        }
-    }
-    players = readyPlayers;
 }
 
 void startGame(bool &finish, addressPlayer &turn, listPlayer &players)
 /*{I.S. Setiap pemain telah mendapatkan kartu, belum ditentukan pemain untuk turn, status playing masih false
 F.S. Turn/giliran diberikan kepada pemain pertama dalam antrian}*/
 {
+    cout<<"starting the game\n";
     finish = false;
     turn = players.first;
 }
@@ -109,7 +83,7 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
     if(nextPlayer.jumlahKartu > 1)
     {
         //ambil kartu
-        while(selectNumber < 0 && selectNumber > nextPlayer.jumlahKartu)
+        while(selectNumber < 0 || selectNumber > nextPlayer.jumlahKartu)
         {
             cin >> selectNumber;
         }
@@ -120,7 +94,7 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
                 enqueueCard(nextPlayer.deck, takedCard);
             }
             dequeueCard(nextPlayer.deck, takedCard);
-        }
+        }cout<<"kamu mendapatkan: "<<takedCard->info<<endl;
         nextPlayer.jumlahKartu--;
         //simpan kartu
         enqueueCard(CurrentPlayer.deck, takedCard);
@@ -132,11 +106,16 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
     }
 }
 
-void removeCard(tumpukanKartu &set, player targetPlayer)
+void removeCard(tumpukanKartu &set, player &targetPlayer)
 /*{I.S. jumlah kartu pemain lebih dari 1
 F.S. kartu pilihan pemain dihapus dari kumpulanKartu}*/
 {
-    int selectNumber = 0;
+    int selectNumber = -1;
+    while(selectNumber < 0 || selectNumber > targetPlayer.jumlahKartu-1)
+        {
+            cout<<"buang 1 kartu milik mu !";
+            cin >> selectNumber;
+        }
     if(targetPlayer.jumlahKartu > 1)
     {
         addressHand removedCard = NULL;
@@ -161,7 +140,15 @@ void show(addressPlayer targetPlayer)
 /*{I.S. Jumlah kartu pemain tidak kosong}
 {F.S. Menampilkan seluruh kartu Hand pemain}*/
 {
-    showCardHand(targetPlayer->info.deck);
+    cout<<"current card of "<<targetPlayer->info.namaPlayer<<endl;
+    addressHand showingCard = targetPlayer->info.deck.head;
+
+    for(int cardNumber = 1; cardNumber <= targetPlayer->info.jumlahKartu ; cardNumber++)
+    {
+        cout<<cardNumber<<". "<<showingCard->info<<endl;
+        showingCard = showingCard->next;
+    }
+    cout<<endl;
 }
 
 //stack for set
@@ -265,15 +252,5 @@ void dequeueCard(kartuPegangan &hand, addressHand &removedCard)
 
 void showCardHand(kartuPegangan hand)
 {
-    addressHand showingCard = hand.head;
-    for(int cardNumber = 1; showingCard->next != NULL; cardNumber++)
-    {
-        cout<<"/t"<<cardNumber;
-    }
-    cout<<endl;
-    for(int cardNumber = 1; showingCard->next != NULL; cardNumber++)
-    {
-        cout<<"/t"<<showingCard->info;
-    }
-    cout<<endl;
+
 }
