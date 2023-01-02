@@ -222,7 +222,8 @@ void createHandQueue(kartuPegangan &newKartuPegangan)
     newKartuPegangan.tail = NULL;
 }
 
-void createHandElement(infotypeKartu newInfotypeKartu, addressHand &newAddressHand)
+void createHandElement(infotypeKartu newInfotypeKartu,
+addressHand &newAddressHand)
 {
     newAddressHand = new elementHand;
     newAddressHand->info = newInfotypeKartu;

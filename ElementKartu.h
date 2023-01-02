@@ -26,9 +26,12 @@ struct kartuPegangan
 typedef int addressSet;
 struct tumpukanKartu
 {
-    infotypeKartu Set[N]={"Joker","Clubs 9","Diamons 9","Spade 9","Hearts 10","Clubs 10",
-    "Diamons 10","Spade 10","Hearts King","Clubs King","Diamons King","Spade King","Hearts Queen",
-    "Clubs Queen","Diamons Queen","Spade Queen","Hearts Jack","Clubs Jack","Diamons Jack","Spade Jack"};
+    infotypeKartu Set[N]={"Joker","Clubs 9",
+    "Diamons 9","Spade 9","Hearts 10","Clubs 10",
+    "Diamons 10","Spade 10","Hearts King","Clubs King",
+    "Diamons King","Spade King","Hearts Queen",
+    "Clubs Queen","Diamons Queen","Spade Queen",
+    "Hearts Jack","Clubs Jack","Diamons Jack","Spade Jack"};
 
     addressSet top = 19;
 };
@@ -91,6 +94,5 @@ bool handIsFull(addressPlayer targetPlayer);
 bool handIsEmpty(addressPlayer targetPlayer);
 void enqueueCard(kartuPegangan &hand, addressHand newCard);
 void dequeueCard(kartuPegangan &hand, addressHand &removedCard);
-void showCardHand(kartuPegangan hand);
 
 #endif // ELEMENTKARTU_H_INCLUDED

@@ -3,7 +3,7 @@
 int main()
 {
 
-    //bikin list player
+    //membuat list player
     listPlayer players;
     players.first = NULL;
     addressPlayer turn;
@@ -36,7 +36,7 @@ int main()
 
     }
 
-    //bikin stack array set
+    //membuat stack array set
 
     tumpukanKartu set;
     createStack(set);
