@@ -11,6 +11,7 @@ void play(bool &finish, listPlayer &players, tumpukanKartu &set,addressPlayer &t
     addressPlayer lose = NULL;
     prepareGame(players, set);
     startGame(finish,turn,players);
+    cout<<"***********************\n\n";
 
     while (finish == false)
     {
@@ -24,7 +25,7 @@ void play(bool &finish, listPlayer &players, tumpukanKartu &set,addressPlayer &t
         takeCard(turn->info,turn->next->info,finish,set);
         removeCard(set, turn->info);
         show(turn);
-        cout<<"your Turn just Over.\npress any key for past to the next player.\n";
+        cout<<"your Turn just Over.\ninput anything for past to the next player.\n\n";
         cin>>x;
         turn = turn->next;
     }
@@ -104,7 +105,7 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
         }
         cout<<"\n=*=*=*=*=*=*=*=*=*=*=*=\n";
         cout<<"kamu mendapatkan: "<<takedCard->info<<endl;
-        cout<<"=*=*=*=*=*=*=*=*=*=*=*=\n";
+        cout<<"=*=*=*=*=*=*=*=*=*=*=*=\n\n";
         nextPlayer.jumlahKartu--;
         //simpan kartu
         enqueueCard(CurrentPlayer.deck, takedCard);
@@ -133,6 +134,7 @@ F.S. kartu pilihan pemain dihapus dari kumpulanKartu}*/
         targetPlayer.jumlahKartu--;
         //convert queue to stack
         //put card to stack
+        cout<<"anda membuang "<<removedCard->info<<endl<<endl;
         push(set, removedCard->info);
     }
 }
