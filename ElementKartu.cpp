@@ -1,7 +1,5 @@
 #include "ElementKartu.h"
 
-//#include<cstdlib>
-
 #include<iostream>
 using namespace std;
 
@@ -10,21 +8,28 @@ void play(bool &finish, listPlayer &players, tumpukanKartu &set,addressPlayer &t
 /*{I.S. finish true, yang artinya permainan belum berlangsung}
 {F.S. Permainan berjalan selama finish masih false, berakhir ketika finish true}*/
 {
+    addressPlayer lose = NULL;
     prepareGame(players, set);
     startGame(finish,turn,players);
 
-
     while (finish == false)
     {
+        string x;
         show(turn);
         cout<<"ambil kartu pemain selanjutnya\n";
-        takeCard(turn->info,turn->next->info,finish);
-        show(turn);
+        for(int i = 1; i < turn->next->info.jumlahKartu+1; i++)
+        {
+            cout<<i<<". ???\n";
+        }
+        takeCard(turn->info,turn->next->info,finish,set);
         removeCard(set, turn->info);
         show(turn);
+        cout<<"your Turn just Over.\npress any key for past to the next player.\n";
+        cin>>x;
         turn = turn->next;
     }
-    checkLose(players);
+    lose = checkLose(players);
+    cout<<"yang kalah adalah: "<<lose->info.namaPlayer<<endl;
 }
 
 void prepareGame(listPlayer &players, tumpukanKartu &set)
@@ -73,7 +78,7 @@ F.S. Pemain yang memiliki kartu bom (Joker) dinyatakan kalah}*/
 }
 
 //players
-void takeCard(player &CurrentPlayer, player &nextPlayer, bool &finish)
+void takeCard(player &CurrentPlayer, player &nextPlayer, bool &finish, tumpukanKartu &set)
 /*{I.S. kartu pemain selanjutnya lebih dari 1
 F.S. kartu pemain selanjutnya diambil dan ditampung dalam variabel, jumlahKartu pemain selanjutnya berkurang 1.
 Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
@@ -85,7 +90,9 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
         //ambil kartu
         while(selectNumber < 0 || selectNumber > nextPlayer.jumlahKartu)
         {
+            cout<<"pilih kartu!\n";
             cin >> selectNumber;
+            cout<<"------------\n";
         }
         for(int qCard = 0; qCard < selectNumber; qCard++)
         {
@@ -94,7 +101,10 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
                 enqueueCard(nextPlayer.deck, takedCard);
             }
             dequeueCard(nextPlayer.deck, takedCard);
-        }cout<<"kamu mendapatkan: "<<takedCard->info<<endl;
+        }
+        cout<<"\n=*=*=*=*=*=*=*=*=*=*=*=\n";
+        cout<<"kamu mendapatkan: "<<takedCard->info<<endl;
+        cout<<"=*=*=*=*=*=*=*=*=*=*=*=\n";
         nextPlayer.jumlahKartu--;
         //simpan kartu
         enqueueCard(CurrentPlayer.deck, takedCard);
@@ -102,7 +112,7 @@ Jika kartu pemain selanjutnya sisa 1, maka permainan berakhir}*/
     }
     else
     {
-        //endgame
+        finish = true;
     }
 }
 
@@ -110,30 +120,39 @@ void removeCard(tumpukanKartu &set, player &targetPlayer)
 /*{I.S. jumlah kartu pemain lebih dari 1
 F.S. kartu pilihan pemain dihapus dari kumpulanKartu}*/
 {
-    int selectNumber = -1;
-    while(selectNumber < 0 || selectNumber > targetPlayer.jumlahKartu-1)
-        {
-            cout<<"buang 1 kartu milik mu !";
-            cin >> selectNumber;
-        }
+    addressHand removedCard = targetPlayer.deck.head;
     if(targetPlayer.jumlahKartu > 1)
     {
-        addressHand removedCard = NULL;
-        //pilih kartu yang mau di buang
-        for(int qCard = 0; qCard < selectNumber; qCard++)
+        if(removedCard->info == "Joker")
         {
-            if(removedCard != NULL)
-            {
-                enqueueCard(targetPlayer.deck, removedCard);
-            }
             dequeueCard(targetPlayer.deck, removedCard);
+            enqueueCard(targetPlayer.deck, removedCard);
         }
+        dequeueCard(targetPlayer.deck, removedCard);
+
         targetPlayer.jumlahKartu--;
         //convert queue to stack
         //put card to stack
         push(set, removedCard->info);
     }
 }
+/* if(removedCard != NULL)
+            {
+                enqueueCard(targetPlayer.deck, removedCard);
+            }
+            removedCard = NULL;
+            cout<<"buang 1 kartu milik mu !";
+            cin>>selectNumber;
+
+            //pilih kartu yang mau di buang
+            for(int qCard = 0; qCard < selectNumber; qCard++)
+            {
+                if(removedCard != NULL)
+                {
+                    enqueueCard(targetPlayer.deck, removedCard);
+                }
+                dequeueCard(targetPlayer.deck, removedCard);
+            }*/
 
 //hand
 void show(addressPlayer targetPlayer)
@@ -157,7 +176,7 @@ void createStack(tumpukanKartu &S) {
 }
 
 bool isEmpty(tumpukanKartu S) {
-    if (S.top == 0) {
+    if (S.top == -1) {
         return true;
     } else {
         return false;
@@ -250,7 +269,3 @@ void dequeueCard(kartuPegangan &hand, addressHand &removedCard)
     }
 }
 
-void showCardHand(kartuPegangan hand)
-{
-
-}

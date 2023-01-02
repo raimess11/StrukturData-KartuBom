@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 #include"ElementKartu.h"
 
 int main()
@@ -15,7 +11,7 @@ int main()
     cout<<"loading player:\n";
     for(int i = 0; i < 4; i++)
     {
-        cout<<"insert player-"<<i+1<<":";
+        cout<<"Insert player-"<<i+1<<" name : ";
         addressPlayer newPlayer = new elementPlayer;
         cin>>newPlayer->info.namaPlayer;
         createHandQueue(newPlayer->info.deck);
